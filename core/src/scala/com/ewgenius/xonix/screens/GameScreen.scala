@@ -1,7 +1,7 @@
 package com.ewgenius.xonix.screens
 
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController
-import com.badlogic.gdx.graphics.{PerspectiveCamera, GL20}
+import com.badlogic.gdx.graphics.{OrthographicCamera, PerspectiveCamera, GL20}
 import com.badlogic.gdx.{Gdx, ScreenAdapter}
 import com.badlogic.gdx.graphics.g3d.ModelBatch
 import com.badlogic.ashley.core.Engine
@@ -13,6 +13,7 @@ class GameScreen(xonixGame: XonixGame) extends ScreenAdapter {
   private val modelBatch: ModelBatch = new ModelBatch()
 
   private val camera: PerspectiveCamera = new PerspectiveCamera(67, Gdx.graphics.getWidth, Gdx.graphics.getHeight)
+  //private val camera: OrthographicCamera = new OrthographicCamera(Gdx.graphics.getWidth, Gdx.graphics.getHeight)
   camera.position.set(10, 10, 10)
   camera.lookAt(0, 0, 0)
   camera.near = 1
@@ -30,6 +31,7 @@ class GameScreen(xonixGame: XonixGame) extends ScreenAdapter {
     engine.addSystem(new MovementSystem)
 
     world.createTestEntity()
+    world.createField()
   }
 
   override def render(delta: Float): Unit = {
