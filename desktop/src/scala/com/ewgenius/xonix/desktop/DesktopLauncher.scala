@@ -7,6 +7,8 @@ import com.ewgenius.xonix.XonixGame
 object DesktopLauncher {
   def main(arg: Array[String]) {
     val config: LwjglApplicationConfiguration = new LwjglApplicationConfiguration
+    config.width = 1024
+    config.height = 600
     new LwjglApplication(new XonixGame, config)
   }
 }
