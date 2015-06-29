@@ -1,7 +1,9 @@
 apply plugin: "java"
+apply plugin: "scala"
 
 sourceCompatibility = 1.6
 sourceSets.main.java.srcDirs = [ "src/java" ]
+sourceSets.main.scala.srcDirs = [ "src/scala" ]
 
 project.ext.mainClassName = "com.ewgenius.xonix.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets");
