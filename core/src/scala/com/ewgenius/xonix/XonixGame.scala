@@ -5,6 +5,8 @@ import screens.GameScreen
 
 class XonixGame extends Game {
   override def create: Unit = {
-    setScreen(new GameScreen(this))
+    val gameScreen: GameScreen = new GameScreen(this)
+
+    setScreen(gameScreen)
   }
 }
