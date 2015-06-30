@@ -1,10 +1,10 @@
-package com.ewgenius.xonix.engine.graphics
+package com.ewgenius.xonix.engine.graphics.shaders
 
+import com.badlogic.gdx.graphics.g3d.shaders.BaseShader
 import com.badlogic.gdx.graphics.g3d.shaders.BaseShader.Uniform
-import com.badlogic.gdx.graphics.{GL20, Camera}
 import com.badlogic.gdx.graphics.g3d.utils.RenderContext
 import com.badlogic.gdx.graphics.g3d.{Renderable, Shader}
-import com.badlogic.gdx.graphics.g3d.shaders.BaseShader
+import com.badlogic.gdx.graphics.{Camera, GL20}
 
 class TestShader extends BaseShader {
   val u_projTrans: Int = register(new Uniform("u_projTrans"))
@@ -22,6 +22,4 @@ class TestShader extends BaseShader {
   override def compareTo(other: Shader): Int = 0
 
   override def canRender(instance: Renderable): Boolean = true
-
-
 }
