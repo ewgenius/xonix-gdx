@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch
 import com.badlogic.ashley.core.Engine
 import com.ewgenius.xonix.XonixGame
 import com.ewgenius.xonix.engine.World
-import com.ewgenius.xonix.engine.systems.{MovementSystem, RenderingSystem}
+import com.ewgenius.xonix.engine.systems.{BehaviourSystem, MovementSystem, RenderingSystem}
 
 class GameScreen(xonixGame: XonixGame) extends ScreenAdapter {
   private val modelBatch: ModelBatch = new ModelBatch()
@@ -29,6 +29,7 @@ class GameScreen(xonixGame: XonixGame) extends ScreenAdapter {
 
     engine.addSystem(new RenderingSystem(modelBatch, camera))
     engine.addSystem(new MovementSystem)
+    engine.addSystem(new BehaviourSystem)
 
     world.createTestEntity()
     world.createField()
