@@ -1,7 +1,11 @@
 package com.ewgenius.xonix.engine.behaviour
 
-class Behaviour {
-  def update(delta: Float): Unit = {
+import com.badlogic.ashley.core.Entity
 
+class Behaviour {
+  var action: (Behaviour, Entity, Float) => Any = (behaviour: Behaviour, entity: Entity, delta: Float) => null
+
+  def update(entity: Entity, delta: Float): Unit = {
+    action(this, entity, delta)
   }
 }

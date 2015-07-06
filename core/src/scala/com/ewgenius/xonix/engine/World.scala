@@ -1,13 +1,14 @@
 package com.ewgenius.xonix.engine
 
-import com.badlogic.ashley.core.{Entity, Engine}
+import com.badlogic.ashley.core.{ComponentMapper, Entity, Engine}
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g3d.shaders.BaseShader
 import com.badlogic.gdx.graphics.g3d.{Renderable, Shader, ModelInstance}
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.math.Vector3
-import com.ewgenius.xonix.engine.components.{MovementComponent, ModelComponent, TransformComponent}
+import com.ewgenius.xonix.engine.behaviour.Behaviour
+import com.ewgenius.xonix.engine.components.{BehaviourComponent, MovementComponent, ModelComponent, TransformComponent}
 
 class World(engine: Engine) {
   private val modelLoader = new ObjLoader()
@@ -27,6 +28,17 @@ class World(engine: Engine) {
     movement.acceleration = new Vector3(0, 0, 0)
     entity.add(movement)
 
+    val behaviour = new BehaviourComponent
+    behaviour.behaviour = new Behaviour
+    val cm: ComponentMapper[MovementComponent] = ComponentMapper.getFor(classOf[MovementComponent])
+    var timer: Float = 0
+    behaviour.behaviour.action = (behaviour: Behaviour, entity: Entity, delta: Float) => {
+      timer += delta
+      val m = cm.get(entity)
+      m.velocity.set(new Vector3(0, Math.sin(timer).toFloat, 0))
+    }
+    entity.add(behaviour)
+
     engine.addEntity(entity)
   }
 
@@ -34,6 +46,7 @@ class World(engine: Engine) {
     val entity: Entity = new Entity
 
     val transform = new TransformComponent
+    transform.scale.set(5, 5, 5)
     entity.add(transform)
 
     val model = new ModelComponent

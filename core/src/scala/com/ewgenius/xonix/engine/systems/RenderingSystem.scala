@@ -23,7 +23,7 @@ class RenderingSystem(modelBatch: ModelBatch, camera: Camera) extends IteratingS
     renderQueue.foreach(entity => {
       val transform: TransformComponent = transformMapper.get(entity)
       val model: ModelComponent = modelMapper.get(entity)
-
+      model.modelInstance.transform.set(transform.position, transform.orientation, transform.scale)
       modelBatch.render(model.modelInstance)
     })
 

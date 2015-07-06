@@ -11,6 +11,6 @@ class BehaviourSystem extends IteratingSystem(Family.all(classOf[BehaviourCompon
   override def processEntity(entity: Entity, delta: Float): Unit = {
     val behaviour: BehaviourComponent = behaviourMapper.get(entity)
 
-    behaviour.behaviour.update(delta)
+    behaviour.behaviour.update(entity, delta)
   }
 }
