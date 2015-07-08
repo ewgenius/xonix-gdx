@@ -1,14 +1,12 @@
-package com.ewgenius.xonix.engine
+package com.ewgenius.xonix.engine.world
 
-import com.badlogic.ashley.core.{ComponentMapper, Entity, Engine}
+import com.badlogic.ashley.core.{ComponentMapper, Engine, Entity}
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.g3d.shaders.BaseShader
-import com.badlogic.gdx.graphics.g3d.{Renderable, Shader, ModelInstance}
+import com.badlogic.gdx.graphics.g3d.ModelInstance
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader
-import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.math.Vector3
 import com.ewgenius.xonix.engine.behaviour.Behaviour
-import com.ewgenius.xonix.engine.components.{BehaviourComponent, MovementComponent, ModelComponent, TransformComponent}
+import com.ewgenius.xonix.engine.components.{BehaviourComponent, ModelComponent, MovementComponent, TransformComponent}
 
 class World(engine: Engine) {
   private val modelLoader = new ObjLoader()
